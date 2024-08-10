@@ -14,4 +14,13 @@ class Produto():
         self.quantidade = quantidade
         self.preco = preco
 
-
+class Gerente():
+    nome: str
+    matricula: int
+    senha: str
+ 
+    def __init__ (self,nome, matricula, senha ):
+        self.nome= nome
+        self.matricula=matricula
+        self.senha= senha
+ 

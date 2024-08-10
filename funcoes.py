@@ -9,7 +9,7 @@ lista_produtos=[]
 lista_usuario=[]
 
 #====================LISTAR=====================
-def listar_produstos_admin(produtos):
+def listar_produtos_admin(produtos):
     for i in range(len(produtos)):
         print(f"| {i + 1} | {produtos[i].nome} | {produtos[i].quantidade} | R$ {produtos[i].preco}    |")
     pressione_enter()
@@ -109,7 +109,7 @@ def painel_adimin():
     op = int(input("[OPÇÃO]-> "))
     if op == 1:
         limpar_tela()
-        listar_produstos_admin(lista_produtos)
+        listar_produtos_admin(lista_produtos)
         limpar_tela()
     
     elif op == 2:
