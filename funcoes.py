@@ -10,11 +10,23 @@ lista_usuario=[]
 
 #====================LISTAR=====================
 def listar_produstos_admin(produtos):
-    for i in range(len(produtos)):
-        print(f"| {i + 1} | {produtos[i].nome} | {produtos[i].quantidade} | R$ {produtos[i].preco}    |")
-    pressione_enter()
+    while True:
+        print("+=============================================+")
+        for i in range(len(produtos)):
+            print(f"| {i + 1} | {produtos[i].nome} | {produtos[i].quantidade} | R$ {produtos[i].preco}    |")
+        print("+=============================================+")
+        print("|    1 - Remover P.    |       2 - Sair       |")
+        print("+=============================================+")
+        escolha = int(input("Escolha uma opção: "))
+        if escolha == 1:
+            for i in range(len(produtos)):
+                print(f"| {i + 1} | {produtos[i].nome} |")
+            escolha = int(input("Escolha um produto para remover: "))
+            produtos.pop(escolha - 1)
+        elif escolha == 2:
+            break
 
-def listar_produstos(produtos, carrinho): #Listar produtos e Adc. no carrinho
+def listar_produtos(produtos, carrinho): #Listar produtos e Adc. no carrinho
     for i in range(len(produtos)):
         print(f"| {i + 1} | {produtos[i].nome} | {produtos[i].quantidade} | R$ {produtos[i].preco}    |")
     op = int(input("Escolha um produto: "))
@@ -29,33 +41,34 @@ def listar_usuarios_do_sistema(lista_usuarios): #Listar Usuarios para o admin
     print("+============================+")
 
 def listar_carrinho(lista_carrinho, produto, usuario): #Visualizar Carrinho, Efetuar pagamento e Remover produto
-    print("+==============[CARRINHO]==============+")
-    for i in range(len(lista_carrinho)):
-        print(f"{i + 1} - {produto[i].nome} | {produto[i].preco} | {produto[i].quantidade}")
-    print("+======================================+")
-    total = sum([produto.preco * produto.quantidade for produto in lista_carrinho])
-    print(f"Total: R${total}")
-    print("+======================================+")
-    print("1 - Pagar | 2 - Remover P. | 3 - Sair")
-    op_carrinho = int(input(""))
-    if op_carrinho == 1:
-        usuario.saldo -= total
-        if usuario.saldo <= 0:
-            print("Saldo insuficiente")
-        else:
-            print("Pagamento realizado com sucesso!")
-    elif op_carrinho == 2:
-        print("Remover produto do carrinho")
+    while True:
+        print("+==============[CARRINHO]==============+")
         for i in range(len(lista_carrinho)):
-            print(f"{i + 1} - {produto[i].nome}")
-        op = int(input("Escolha um produto: "))
-        produto_selecionado = produto[op - 1]
-        lista_carrinho.remove(produto_selecionado)
-    elif op_carrinho == 3:
-        print("Sair do carrinho")
-        pass
-    else:
-        print("Opção inválida")
+            print(f"{i + 1} - {produto[i].nome} | {produto[i].preco} | {produto[i].quantidade}")
+        print("+======================================+")
+        total = sum([produto.preco * produto.quantidade for produto in lista_carrinho])
+        print(f"Total: R${total}")
+        print("+======================================+")
+        print("1 - Pagar | 2 - Remover P. | 3 - Sair")
+        op_carrinho = int(input(""))
+        if op_carrinho == 1:
+            usuario.saldo -= total
+            if usuario.saldo <= 0:
+                print("Saldo insuficiente")
+            else:
+                print("Pagamento realizado com sucesso!")
+        elif op_carrinho == 2:
+            print("Remover produto do carrinho")
+            for i in range(len(lista_carrinho)):
+                print(f"{i + 1} - {produto[i].nome}")
+            op = int(input("Escolha um produto: "))
+            produto_selecionado = produto[op - 1]
+            lista_carrinho.remove(produto_selecionado)
+        elif op_carrinho == 3:
+            print("Sair do carrinho")
+            break
+        else:
+            print("Opção inválida")
 #===============================================
 
 #====================Visual=====================
@@ -75,9 +88,10 @@ def criar_usuario_novo(lista_usuario):
     _telefone=input("Digite seu Telefone: ")
     _senha = getpass.getpass("Digite a senha: ")
     _comfirme_senha = getpass.getpass("Comfirme a Senha: ")
+    _saldo = int(input("Adicione um saldo"))
     if _senha == _comfirme_senha:
         print("Usuário Criado com Sucesso!!")
-        usuario = Cliente( nome = _nome, senha = _senha, cpf = _cpf, telefone = _telefone, idade = _idade )
+        usuario = Cliente( nome = _nome, senha = _senha, cpf = _cpf, telefone = _telefone, idade = _idade, saldo = _saldo)
         pressione_enter()
         lista_usuario.append(usuario)
     else:
@@ -104,7 +118,6 @@ def logar_admin():
         print("Login Inválido!!")
         return False       
 #===============================================
-
 def painel_adimin():
     op = int(input("[OPÇÃO]-> "))
     if op == 1:
@@ -117,7 +130,9 @@ def painel_adimin():
         adicionar_produto(lista_produtos)
         limpar_tela()
     elif op == 3:
-        pass
+        limpar_tela()
+        listar_produstos_admin()
+        limpar_tela()
 
     elif op == 4:
         listar_usuarios_do_sistema(lista_usuario)
@@ -127,12 +142,20 @@ def painel_adimin():
         pass
 
 
+def painel_usuario(): #Falta completar as funções com dos "IF's" com as "DEF's" do Murilo.
+    op = int(input("[OPÇÃO]-> "))
+    if op == 1:
+        listar_produtos(lista_produtos, lista_carrinho)
+        
+    elif op == 2:
+        #Vizualizar carrinho de compras
+        listar_carrinho(lista_carrinho, lista_produtos, None)
 
 
-    
+    elif op == 3:
+        #Adicionar Saldo
+        pass
 
-
-    
-
-
-
+    elif op == 0:
+        print("Saindo do Sistema!!")
+        exit()
