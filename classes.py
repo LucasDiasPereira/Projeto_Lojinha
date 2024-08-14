@@ -14,7 +14,7 @@ class Produto():
         self.quantidade = quantidade
         self.preco = preco
 
-class Gerente():
+class Adiministrador():
     nome: str
     matricula: int
     senha: str
