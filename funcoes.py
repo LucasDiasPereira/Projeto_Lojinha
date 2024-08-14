@@ -75,9 +75,10 @@ def criar_usuario_novo(lista_usuario):
     _telefone=input("Digite seu Telefone: ")
     _senha = getpass.getpass("Digite a senha: ")
     _comfirme_senha = getpass.getpass("Comfirme a Senha: ")
+    _saldo = 2000
     if _senha == _comfirme_senha:
         print("Usuário Criado com Sucesso!!")
-        usuario = Cliente( nome = _nome, senha = _senha, cpf = _cpf, telefone = _telefone, idade = _idade )
+        usuario = Cliente( nome = _nome, senha = _senha, cpf = _cpf, telefone = _telefone, idade = _idade, saldo = _saldo )
         pressione_enter()
         lista_usuario.append(usuario)
     else:
@@ -125,14 +126,3 @@ def painel_adimin():
     elif op == 0:
         print("Saindo do Sistema!!")
         pass
-
-
-
-
-    
-
-
-    
-
-
-
