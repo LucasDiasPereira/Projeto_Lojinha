@@ -13,13 +13,16 @@ def menu_admin():
 +=======[MENU DO ADMIN]=======+
 | [1]-Listar Produtos         |
 | [2]-Adicionar Produtos      |
-| [3]-Remover Produtos        |
-| [4]-Listar Usuários         |
+| [3]-Listar Usuários         |
 | [0]-Sair                    |         
 +=============================+""")
     
 
-
-
-
-
+def interface_usuario():
+    print("""
++===========[MENU DO USUÁRIO]===========+
+| [1]-Listar Produtos da Loja           |
+| [2]-Vizualizar Carrinho de Compras    |
+| [3]-Adicionar Saldo                   |
+| [0]-Sair                              |
++=======================================+""")
