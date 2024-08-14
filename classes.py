@@ -6,6 +6,7 @@ class Cliente():
         self.telefone = telefone
         self.senha = senha
         self.saldo = saldo
+        self.carrinho = []
 
 
 class Produto():
