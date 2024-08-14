@@ -84,15 +84,6 @@ def criar_usuario_novo(lista_usuario):
         print("Senha não é igual")
         return False
 
-def adicionar_produto(lista_produtos):
-
-    _nome = input("Digite o Nome do Produto: ")
-    _preco = float(input("Digite o Preco do Produto: "))
-    _quantidade = input("Digite a Quantidade do Produto: ")
-    _produto = Produto(nome = _nome, preco = _preco, quantidade = _quantidade)
-    lista_produtos.append(_produto)
-    pressione_enter()
-    print("Produto Adicionado com Sucesso!!")
 
 def logar_admin():
     _login = input("Digite o Login: ")
@@ -103,7 +94,21 @@ def logar_admin():
     else:
         print("Login Inválido!!")
         return False       
-#===============================================
+    
+
+def adicionar_produto(lista_produtos):
+
+    _nome = input("Digite o Nome do Produto: ")
+    _preco = float(input("Digite o Preco do Produto: "))
+    _quantidade = input("Digite a Quantidade do Produto: ")
+    _produto = Produto(nome = _nome, preco = _preco, quantidade = _quantidade)
+    lista_produtos.append(_produto)
+    pressione_enter()
+    print("Produto Adicionado com Sucesso!!")
+
+
+
+#======================ADM=========================
 
 def painel_adimin():
     op = int(input("[OPÇÃO]-> "))
