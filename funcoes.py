@@ -158,3 +158,6 @@ def listar_produtos_admin(produtos):
 
         elif escolha == "3":
             break
+
+
+print('teste')

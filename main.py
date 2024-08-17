@@ -12,7 +12,7 @@ while True:
         limpar_tela()
         criar_usuario_novo(lista_usuario)
     elif opt_menu =="2":
-        pass
+        pass   
     elif opt_menu =="3":
         if logar_admin() == True:
             while True:
