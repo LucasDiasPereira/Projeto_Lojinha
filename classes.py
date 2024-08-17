@@ -7,6 +7,7 @@ class Cliente():
         self.telefone = telefone
         self.senha = senha
         self.saldo = saldo
+        self.carrinho = []
 
 
 class Produto():
@@ -19,7 +20,8 @@ class Produto():
         self.quantidade = quantidade
         self.preco = preco
 
-class Gerente():
+
+class Adiministrador():
     nome: str
     matricula: int
     senha: str

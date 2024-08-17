@@ -9,6 +9,12 @@ lista_produtos=[]
 lista_usuario=[]
 
 #====================LISTAR=====================
+
+def listar_produtos_admin(produtos):
+    for i in range(len(produtos)):
+        print(f"| {i + 1} | {produtos[i].nome} | {produtos[i].quantidade} | R$ {produtos[i].preco}    |")
+    pressione_enter()
+
 def listar_produstos(produtos, carrinho): #Listar produtos e Adc. no carrinho
     for i in range(len(produtos)):
         print(f"| {i + 1} | {produtos[i].nome} | {produtos[i].quantidade} | R$ {produtos[i].preco}    |")
@@ -70,9 +76,10 @@ def criar_usuario_novo(lista_usuario):
     _telefone=input("Digite seu Telefone: ")
     _senha = getpass.getpass("Digite a senha: ")
     _comfirme_senha = getpass.getpass("Comfirme a Senha: ")
+    _saldo = 0
     if _senha == _comfirme_senha:
         print("Usuário Criado com Sucesso!!")
-        usuario = Cliente( nome = _nome, senha = _senha, cpf = _cpf, telefone = _telefone, idade = _idade )
+        usuario = Cliente( nome = _nome, senha = _senha, cpf = _cpf, telefone = _telefone, idade = _idade, saldo = _saldo )
         pressione_enter()
         lista_usuario.append(usuario)
     else:
@@ -99,6 +106,30 @@ def logar_admin():
         print("Login Inválido!!")
         return False       
 #===============================================
+def painel_usuario(): #Falta completar as funções com dos "IF's" com as "DEF's" do Murilo.
+    op = int(input("[OPÇÃO]-> "))
+    if op == 1:
+        listar_produtos_admin(lista_produtos, lista_carrinho)
+    
+    elif op == 2:
+        #Vizualizar carrinho de compras
+        pass
+
+
+    elif op == 3:
+        #Adicionar Saldo
+        pass
+    
+    elif op == 0:
+        print("Saindo do Sistema!!")
+        exit()
+
+def logar_usuario(): #Falta colocar as novas funções do Murilo.
+    usuario=input("Digite seu nome de Usuário: ")
+    senha=input("Digite sua Senha: ")
+    for _ in range(0,len(lista_usuario)):
+        if usuario == lista_usuario[_].nome and senha == lista_usuario[_].senha:
+            return True
 
 def painel_adimin():
     op = int(input("[OPÇÃO]-> "))
@@ -117,9 +148,6 @@ def painel_adimin():
     
     elif op == 0:
         print("Saindo do Sistema!!")
-        pass
-
-
 
 def listar_produtos_admin(produtos):
     while True:
@@ -160,4 +188,3 @@ def listar_produtos_admin(produtos):
             break
 
 
-print('teste')
