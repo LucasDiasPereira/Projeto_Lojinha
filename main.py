@@ -14,7 +14,6 @@ while True:
         criar_usuario_novo(lista_usuario)
 
     elif opt_menu =="2":
-
         if logar_usuario() == True:
             limpar_tela()
             print("Logado!!")

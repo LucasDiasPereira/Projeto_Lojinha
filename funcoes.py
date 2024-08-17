@@ -9,6 +9,7 @@ lista_produtos=[]
 lista_usuario=[]
 
 #====================LISTAR=====================
+
 def listar_produtos_admin(produtos):
     for i in range(len(produtos)):
         print(f"| {i + 1} | {produtos[i].nome} | {produtos[i].quantidade} | R$ {produtos[i].preco}    |")
@@ -141,12 +142,49 @@ def painel_adimin():
         limpar_tela()
         adicionar_produto(lista_produtos)
         limpar_tela()
+        
     elif op == 3:
-        pass
-
-    elif op == 4:
         listar_usuarios_do_sistema(lista_usuario)
     
     elif op == 0:
         print("Saindo do Sistema!!")
-        pass
+
+def listar_produtos_admin(produtos):
+    while True:
+        print("+===================PRODUTOS===================+")
+        for i in range(len(produtos)):
+            print(f"| {i + 1} | {produtos[i].nome} | {produtos[i].quantidade} | R$ {produtos[i].preco}    |")
+        print("+=============================================+")
+        print("|1 - Remover P.| 2 - Editar P. |   3 - Sair   |")
+        print("+=============================================+")
+        escolha = input("Escolha uma opção: ")
+        if escolha == "1":
+            while True:
+                print("+==============ESCOLHA PRODUTOS==============+")
+                for i in range(len(produtos)):
+                    print(f"| {i + 1} | {produtos[i].nome} | {produtos[i].quantidade}")
+                print("+============================================+")
+                print("|                0 - Sair                    |")
+                escolha_produto = int(input("Escolha o produto que deseja remover: "))
+                produto_selecionado = produtos[escolha_produto - 1]
+                produtos.quantidade -= 1
+                if produtos.quantidade <= 0:
+                    produtos.remove(produto_selecionado)
+                if escolha_produto == 0:
+                    break
+        
+        elif escolha == "2":
+            while True:
+                print("+==============ESCOLHA PRODUTOS==============+")
+                for i in range(len(produtos)):
+                    print(f"| {i + 1} | {produtos[i].nome} | {produtos[i].preco}")
+                print("+============================================+")
+                print("|                0 - Sair                    |")
+                escolha_produto = int(input("Escolha o produto que deseja editar: "))
+                produto_selecionado = produtos[escolha_produto - 1]
+                produto_selecionado.preco = float(input("Digite o novo Preço: "))
+
+        elif escolha == "3":
+            break
+
+
